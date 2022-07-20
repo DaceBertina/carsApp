@@ -1,0 +1,185 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns: sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<html layout:decorate="~{task/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          type = text/css
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <title>Sign Up</title>
+    <style>
+            body {
+                font: 13pt Arial, Helvetica, sans-serif; /* Text font */
+                background: #f1f2f3; /* Background color */
+            }
+            h1 {
+                font-weight: bold;
+                font-size: 60px; /* Font size */
+                color: #f1f2f3;
+                margin: 0;
+                padding: 0;
+            }
+            h2 {
+                font-size: 30px; /* Font size */
+                color: #f1f2f3;
+                margin: 0;
+                padding: 0;
+            }
+            h3 {
+                font-size: 16px; /* Font size */
+                color: #080808; /* Background color */
+                margin-top: 3; /* Top indent */
+            }
+            h4 {
+                font-size: 18px; /* Font size */
+                color: #f1f2f3;
+            }
+            h6 {
+                font-size: 14px; /* Font size */
+                color: #f1f2f3;
+                margin: 0;
+                padding: 0;
+            }
+            h5 {
+                font-size: 18px; /* Font size */
+                color: #f1f2f3;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                width: 600px; /* Layer Width */
+                margin: 0 auto; /* Align entire block to the center */
+                background: #f0f0f0; /* Left column background color */
+                margin-bottom: 20px
+            }
+            .header {
+                color: #f1f2f3;
+                text-align: left; /* Align header text to the left */
+                background: #f03c33; /* Header background color */
+                margin: 0;
+                padding: 0;
+            }
+            .content {
+                margin-left: 160px; /* Indent left */
+                padding: 10px; /* Padding inside the right block */
+                background: #f1f2f3; /* Right block background color */
+            }
+            .footer {
+                color: #f1f2f3;
+                background: #f03c33; /* Footer background color */
+                padding: 5px; /* Fields inside a block */
+                clear: left; /* Cancel the float action of .sidebar*/
+                text-align: right; /* Align footer text to the right */
+            }
+            .link {
+                color: blue; /* Text color */
+                font-size: 18px;
+             }
+             .button {
+                height: 30px;
+                width: 120px;
+                background-color: #7fffd4;
+                border: 2 px solid blue;
+                border-radius: 10px;
+                padding: 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin-bottom: 20px;
+                margin-top: 20px;
+            }
+            .mt-2 {
+                margin-top: ($spacer * .5) !important;
+            }
+            .ml-2 {
+                 margin-left: ($spacer * .5) !important;
+            }
+            .px-2 {
+                padding-left: ($spacer * .5) !important;
+                padding-right: ($spacer * .5) !important;
+            }
+            .p-3 {
+                padding: $spacer !important;
+            }
+        </style>
+</head>
+<body>
+<div class="header">
+    <div class="header"><h1>Car rental</h1></div>
+    <h5><u>Our contacts:</u></h5>
+    <h6>Cars street 555 </h6>
+    <h6>Cars city, Cars country</h6>
+    <h6>email, phone</h6><br>
+</div>
+<p></p>
+<div class="content display-block">
+    <h2 style = "color: #800080" align="center" class="font-weight-bold">Sign Up - Registration</h2>
+    <form th:action="@{/registration}" method="post" th:object="${user}">
+        <div class="mx-auto" style="width: 600px;">
+            <div class="m-3 mt-2 mb-2 ml-2 mr-2 px-2 pt-2 pb-2 p-3 bg-info">
+                <div class="form-group row">
+                    <label class="col-form-label col-3"><strong>Email:</strong></label>
+                    <div class="col-8">
+                        <input type="email" class="form-control" th:field="*{e_mail}" id="e_mail" required/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-3"><strong>Password:</strong></label>
+                    <div class="col-8">
+                        <input type="password" class="form-control" th:field="*{password}" required
+                               minlength="8"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-3" style="font-weight-bold color: blue"><strong>Name:</strong></label>
+                    <div class="col-8">
+                        <input type="text" class="form-control" th:field="*{name}" required
+                               minlength="2" maxlength="40"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-3"><strong>Surname:</strong></label>
+                    <div class="col-8">
+                        <input type="text" class="form-control" th:field="*{last_name}" required
+                               minlength="2" maxlength="60"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-3"><strong>ID code:</strong></label>
+                    <div class="col-8">
+                        <input type="text" class="form-control" th:field="*{id_code}"
+                               maxlength="20"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-3"><strong>Address:</strong></label>
+                    <div class="col-8">
+                        <input type="text" class="form-control" th:field="*{address}"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-form-label col-3"><strong>Telephone:</strong></label>
+                    <div class="col-8">
+                        <input type="text" class="form-control" th:field="*{telephone_no}"
+                               maxlength="12"/>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary"><strong>Sign Up</strong></button>
+            </div>
+        </div>
+    </form>
+    <div>
+        <button class ="button" onclick="history.back()"><a href="index.html" th:href="@{/}"><strong>GO BACK</strong></a></button>
+    </div>
+</div>
+<div class="footer">&copy; Car Rental Team 2022</div>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns: sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html layout:decorate="~{task/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Cars</title>
+    <link rel="stylesheet"
+          type = text/css
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <style>
+      .header {
+           font-size: 38px; /* Header text size */
+           text-align: left; /* Align header text to the left */
+           padding: 15px; /* Padding inside the header block */
+           background: #f03c33; /* Header background color */
+           color: #f1f2f3;
+      }
+       h1 {
+                font-weight: bold;
+                font-size: 60px; /* Font size */
+                margin: 0;
+                padding: 0;
+            }
+      h4 {
+           font-size: 14px; /* Font size */
+           color: #f1f2f3;
+           margin: 0;
+           padding: 0;
+      }
+      h5 {
+          font-size: 20px; /* Font size */
+          color: #f1f2f3;
+          margin: 0;
+          padding: 0;
+      }
+      p {
+                font-size: 14px; /* Font size */
+                color: #f1f2f3;
+                margin: 0;
+                padding: 0;
+            }
+      table, th, td {
+          border: 1px solid black;
+          padding: 1px;
+      }
+       .button {
+                height: 25px;
+                width: 200px;
+                background-color: #7fffd4;
+                border-radius: 10px;
+                display: inline-block;
+                clear: left;
+                padding: 10px;
+                vertical-align:middle
+                align-items: center;
+                font-size: 16px;
+            }
+       .footer {
+                background: #f03c33; /* Footer background color */
+                padding: 5px; /* Fields inside a block */
+                clear: left; /* Cancel the float action of .sidebar*/
+                text-align: right; /* Align footer text to the right */
+                color: #f1f2f3;
+            }
+    </style>
+</head>
+<body>
+<div class="header"><h1>Car rental</h1>
+    <h5><u>Our contacts:</u></h5>
+    <p>Cars street 555 </p>
+    <p>Cars city, Cars country</p>
+    <p>email, phone</p>
+</div>
+<div class="content display-block">
+    <h2 style = "color: #800080" align="center" class="font-weight-bold">Your profile information:</h2>
+    <div>
+        <form th:action="@{/logout}" method="post">
+        <p>
+            Welcome to your profile, <b>[[${}#request.userPrincipal.principal.FullName}]]</b>
+        </p>
+        <input type="submit" value="Sign Out" />
+    </form>
+    </div>
+</div>
+<div>
+<h2 style = "color:orange" align="center">Your profile information:</h2>
+</div>
+<div align="center">
+    <div layout:fragment="content">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Gender</th>
+                <th>Birthdate</th>
+                <th>Address</th>
+                <th>Telephone number</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+        <div>
+            <h2 style = "color:orange" align="center">Your contracts:</h2>
+        </div>
+            <div align="center">
+                <div layout:fragment="content">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Contract No</th>
+                                <th>Car ID</th>
+                                <th>BRAND</th>
+                                <th>MODEL</th>
+                                <th>YEAR</th>
+                                <th>RENTAL PERIOD</th>
+                                <th>PRICE/month</th>
+                                <th>SUM</th>
+                            </tr>
+                         </thead>
+                        <tbody>
+                                 <tr th:each="car : ${allCars}">
+                                 <td th:text="${car.id_number}"></td>
+                                 <td th:text="${car.brand}"></td>
+                                 <td th:text="${car.model}"></td>
+                                 <td th:text="${car.year}"></td>
+                                 <td th:text="${car.fuel}"></td>
+                                 <td th:text="${car.gearbox}"></td>
+                                 <td th:text="${car.price}"></td>
+                                 <td th:text="${car.description}"></td>
+                            </tr>
+                    </tbody>
+                </table>
+         </div>
+   </div>
+        <div>
+        <button class ="button" onclick="history.back()"><a href="index.html" th:href="@{/}"><strong>GO BACK</strong></a></button>
+        </div>
+        <div>
+            <button class ="button"><a href="index.html" th:href="@{/}"><strong>Return to home</strong></a></button>
+        </div>
+    </div>
+<div class="footer">&copy; Car Rental Team 2022</div>
+</body>
+</html>

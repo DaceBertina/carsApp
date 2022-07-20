@@ -1,0 +1,189 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns: sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.w3.org/1999/xhtml">
+<html layout:decorate="~{task/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+          type = text/css
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <title>Car Rental / Home page</title>
+        <style>
+        body {
+                font: 13pt Arial, Helvetica, sans-serif; /* Text font */
+                background: #f1f2f3; /* Background color */
+                color: #f1f2f3;
+            }
+            h1 {
+                font-weight: bold;
+                font-size: 60px; /* Font size */
+                margin: 0;
+                padding: 0;
+            }
+            h2 {
+                font-size: 30px; /* Font size */
+                font-weight: bold;
+                color: #f1f2f3;
+                margin: 0;
+                padding: 0;
+            }
+            h3 {
+                font-size: 16px; /* Font size */
+                color: #080808; /* Background color */
+                margin-top: 3; /* Top indent */
+            }
+            h4 {
+                font-size:20x; /* Font size */
+                color: #f1f2f3;
+            }
+            p {
+                font-size: 14px; /* Font size */
+                color: #f1f2f3;
+                margin: 0;
+                padding: 0;
+            }
+            h5 {
+                font-size: 18px; /* Font size */
+                color: #f1f2f3;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                width: 600px; /* Layer Width */
+                margin: 0 auto; /* Align entire block to the center */
+                background: #f0f0f0; /* Left column background color */
+            }
+            .header {
+                color: #f1f2f3;
+                text-align: left; /* Align header text to the left */
+                padding: 15px; /* Padding inside the header block */
+                background: #f03c33; /* Header background color */
+            }
+            .sidebar {
+                margin-top: 0px;
+                width: 150px;
+                padding: 0 10px; /* Padding inside the left block */
+                float: left; /* Wrap block right */
+            }
+            .sidebar1 {
+                margin-top: 45px;
+                width: 145px; /* Block Width */
+                padding: 10px; /* Padding inside the left block */
+                float: left; /* Wrap block right */
+            }
+            .content {
+                margin-left: 160px; /* Indent left */
+                padding: 10px; /* Padding inside the right block */
+                background: #f1f2f3; /* Right block background color */
+            }
+            .footer {
+                color: #f1f2f3;
+                background: #f03c33; /* Footer background color */
+                padding: 5px; /* Fields inside a block */
+                clear: left; /* Cancel the float action of .sidebar*/
+                text-align: right; /* Align footer text to the right */
+            }
+            .car_block {
+                background: #96b9ec;
+                height: 120px;
+                padding: 10px; /* Padding inside car_block */
+                margin-top: 0px;
+                margin-bottom: 15px;
+            }
+            .car_name {
+                font-weight: bold;
+                color: #16271c; /* Text color */
+                font-size: 24px; /* Font size in car_name */
+                margin: 0;
+                padding: 0;
+            }
+            .link {
+                color: blue; /* Text color */
+                font-size: 18px;
+             }
+            .button {
+                height: 50px;
+                width: 120px;
+                line-height: 0;
+                background-color: #7fffd4;
+                border-radius: 10px;
+                padding: 10px;
+                text-align: center;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+            }
+             .button1 {
+                height: 50px;
+                width: 120px;
+                line-height: 0;
+                background-color: #33ff74;
+                border-radius: 10px;
+                padding: 10px;
+                text-align: center;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+            }
+        </style>
+    </head>
+<body>
+<div class="header">
+    <h1>Car rental</h1>
+    <h5><u>Our contacts:</u></h5>
+    <p>Cars street 555 </p>
+    <p>Cars city, Cars country</p>
+    <p>email, phone</p>
+    <p></p>
+</div>
+<div class="sidebar1">
+    <h4><a th:href="@{/allcars}"><u>Cars available</u></a></h4>
+    <h4><a th:href="@{/profile}"><u>Your Profile</u></a></h4>
+    <h4>
+        <button class = "button"><a th:href="@{/signup}"><b>SIGN UP</b></a></button>
+    </h4>
+    <div>
+        <button class="button1"><a th:href="@{/login}"><b>SIGN IN</b></a></button>
+    </div>
+</div>
+
+<div class="content">
+    <h2 style="color:blue"><u>Car List:</u></h2>
+    <h3 class="car_block">
+        <img src="images/Kia.jpg" width="300" class="sidebar">
+        <p class="car_name">Kia</p>
+            <a class="link" href="kia.html" th:href="@{/kia}">Description</a>
+    </h3>
+    <h3 class="car_block">
+        <img src="images/Opel.jpg" width="300" class="sidebar">
+        <p class="car_name">Opel</p>
+        <a class="link" href="opel.html" th:href="@{/opel}">Description</a>
+    </h3>
+    <h3 class="car_block">
+        <img src="images/Vwagen.jpg" width="300" class="sidebar">
+        <p class="car_name">Volkswagen</p>
+        <a class="link" href="vwagen.html" th:href="@{/vwagen}">Description</a>
+    </h3>
+    <h3 class="car_block">
+        <img src="images/Skoda.png" width="300" class="sidebar">
+        <p class="car_name">Škoda</p>
+        <a class="link" href="skoda.html" th:href="@{/skoda}">Description</a>
+    </h3>
+    <h3 class="car_block">
+        <img src="images/VW_TCross.jpg" width="300" class="sidebar">
+        <p class="car_name">Volkswagen T-Cross</p>
+        <a class="link" href="vwcross.html" th:href="@{/vwcross}">Description</a>
+    </h3>
+    <h3 class="car_block">
+        <img src="images/Citroen.jpg" width="300" class="sidebar">
+        <p class="car_name">Citroen</p>
+        <a class="link" href="citroen.html" th:href="@{/citroen}">Description</a>
+    </h3>
+</div>
+<div class="footer">&copy; Car Rental Team 2022</div>
+</body>
+</html>

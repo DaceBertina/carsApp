@@ -1,0 +1,122 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns: sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html layout:decorate="~{task/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table Cars</title>
+    <link rel="stylesheet"
+          type = text/css
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <style>
+      .header {
+           font-size: 38px; /* Header text size */
+           text-align: left; /* Align header text to the left */
+           padding: 15px; /* Padding inside the header block */
+           background: #f03c33; /* Header background color */
+           color: #f1f2f3;
+      }
+       h1 {
+               font-weight: bold;
+               font-size: 60px; /* Font size */
+               margin: 0;
+               padding: 0;
+            }
+      h4 {
+           font-size: 14px; /* Font size */
+           color: #f1f2f3;
+           margin: 0;
+           padding: 0;
+      }
+      h5 {
+          font-size: 20px; /* Font size */
+          color: #f1f2f3;
+          margin: 0;
+          padding: 0;
+      }
+      h6 {
+            font-size: 14px; /* Font size */
+            color: #f1f2f3;
+            margin: 0;
+            padding: 0;
+       }
+
+      table, th, td {
+          border: 1px solid black;
+          padding: 1px;
+      }
+       .button {
+                height: 70px;
+                width: 200px;
+                line-height: 0;
+                background-color: #7fffd4;
+                border-radius: 10px;
+                display: inline-block;
+                padding: 10px;
+                align-items: center;
+                font-size: 16px;
+            }
+       .footer {
+                position:absolute;
+                bottom:0;
+                width:100%;
+                height:45px;
+                background: #f03c33; /* Footer background color */
+                padding: 5px; /* Fields inside a block */
+                clear: left; /* Cancel the float action of .sidebar*/
+                text-align: right; /* Align footer text to the right */
+                color: #f1f2f3;
+            }
+    </style>
+</head>
+<body>
+<div class="header"><h1>Car rental</h1>
+<h5><u>Our contacts:</u></h5>
+<h6>Cars street 555 </h6>
+<h6>Cars city, Cars country</h6>
+<h6>email, phone</h6>
+</div>
+<h2 style = "color:orange" align="center"><u><strong>Cars available:</strong></u></h2>
+<div align="center">
+        <div layout:fragment="content">
+          <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>BRAND</th>
+                <th>MODEL</th>
+                <th>YEAR</th>
+                <th>FUEL</th>
+                <th>GEARBOX</th>
+                <th>PRICE</th>
+                <th>DESCRIPTION</th>
+                <th>RENT</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="car : ${allCars}">
+                    <td th:text="${car.id_number}"></td>
+                    <td th:text="${car.brand}"></td>
+                    <td th:text="${car.model}"></td>
+                    <td th:text="${car.year}"></td>
+                    <td th:text="${car.fuel}"></td>
+                    <td th:text="${car.gearbox}"></td>
+                    <td th:text="${car.price}"></td>
+                    <td th:text="${car.description}"></td>
+                    <td>
+                        <a th:href="@{/rent}" th:text="${'Application Form'}"></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            <p>
+                <button class ="button"><a href="index.html" th:href="@{/}"><strong>Return to home</strong></a></button>
+            </p>
+       </div>
+</div>
+<div class="footer">&copy; Car Rental Team 2022</div>
+</body>
+</html>
